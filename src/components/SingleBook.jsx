@@ -11,13 +11,22 @@ import { Card } from "react-bootstrap";
 
 class SingleBook extends Component {
   state = {
-    selectedBook: false,
-  };
-  render(book) {
+    selected: false
+  }
+  render() {
     return (
-      <Card>
-        <Card.Img variant="top" src={book} />
-      </Card>
+
+      <Card onClick={() => this.setState({ selected: !this.state.selected })}
+      style={{ outline: this.state.selected ? '3px solid olive' : 'none' }}>
+      <Card.Img variant="top" src={this.props.singleBook.img} />
+      <Card.Body>
+        <Card.Title>
+          {this.props.singleBook.title}
+        </Card.Title>
+        ${this.props.singleBook.price}
+      </Card.Body>
+    </Card>
+
     );
   }
 }
